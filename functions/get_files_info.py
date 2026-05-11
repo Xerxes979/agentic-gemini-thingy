@@ -6,11 +6,11 @@ def get_files_info(working_directory, directory="."):
     targetPath = os.path.normpath(os.path.join(workingPath, directory))
     validTargetDir = os.path.commonpath([workingPath, targetPath]) == workingPath
     if not validTargetDir:
-        print(f'Error: Cannot list "{directory}" as it is outside the permitted working directory')
+        return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
     else:
         # check if the requested working directory is a directory
         if not os.path.exists(targetPath):
-            print(f'Error: "{directory}" is not a directory')
+            return f'Error: "{directory}" is not a directory'
 
         # iterate through target directory items and get info
         if directory == ".":
